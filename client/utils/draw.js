@@ -1,4 +1,5 @@
 import Player from "../classes/player.js";
+import Props from "../classes/props.js";
 
 /**
  * @param {CanvasRenderingContext2D} ctx
@@ -13,4 +14,15 @@ function drawPlayers(ctx, players) {
     });
 };
 
-export default drawPlayers;
+/**
+ * @param {CanvasRenderingContext2D} ctx
+ * @param {Props} props
+ **/
+function drawProps(ctx, props) {
+    props.getProps().forEach(prop => {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(prop.x, prop.y, prop.width, prop.height);
+    });
+}
+
+export { drawPlayers, drawProps };

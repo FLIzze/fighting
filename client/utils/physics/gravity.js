@@ -1,10 +1,12 @@
-import Player from "../classes/player.js";
+import Player from "../../classes/player.js";
 
 /**
  * @param {Player[]} players
+ * @param {HTMLCanvasElement} canvas
  **/
-function addGravity(players, floor) {
+function addGravity(players, canvas) {
     players.forEach(player => {
+        const floor = canvas.height - player.size.height
         if (player.cords.y + player.size.height >= floor) { 
             player.velocity.y = 0;
             player.isJumping = false;
