@@ -16,9 +16,25 @@ class Player {
     /**
      * @param {number} deltaTime
      **/
-    updatePosition(deltaTime) {
+    updatePosition(deltaTime, canvas) {
         this.cords.x += this.velocity.x * deltaTime / 1000;
         this.cords.y += this.velocity.y * deltaTime / 1000;
+        this.addGravity(canvas);
+    }
+
+    /**
+     * @param {HTMLCanvasElement} canvas
+     **/
+    addGravity(canvas) {
+        const floor = canvas.height - this.size.height;
+        if (this.cords.y + this.size.height >= floor) {
+            this.velocity.y = 0;
+            this.isJumping = false;
+            return;
+        }
+
+        if (!this.isJumping) return;
+        this.velocity.y += this.fallSpeed;
     }
 
     /**
@@ -32,6 +48,7 @@ class Player {
 
     canMove() {
         //TODO
+        return true;
     }
 
     jump() {
@@ -40,11 +57,13 @@ class Player {
 
     moveLeft() {
         console.log('moveLeft');
+        if (!this.canMove()) return;
         this.velocity.x = -this.moveSpeed;
     }
 
     moveRight() {
         console.log('moveRight');
+        if (!this.canMove()) return;
         this.velocity.x = this.moveSpeed;
     }
 

@@ -18,9 +18,14 @@ function addGravity(players, canvas) {
     });
 }
 
-function updatePosition(players, deltaTime) {
+/**
+ * @param {Player[]} players
+ * @param {number} deltaTime
+ * @param {HTMLCanvasElement} canvas
+ **/
+function updatePosition(players, deltaTime, canvas) {
     players.forEach(player => {
-        player.updatePosition(deltaTime);
+        player.updatePosition(deltaTime, canvas);
     });
 }
 

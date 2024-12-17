@@ -1,22 +1,12 @@
 import Player from './classes/player.js'
-import { addGravity, updatePosition } from './utils/physics/gravity.js';
-import { drawPlayers, drawProps } from './utils/draw.js';
+import { updatePosition } from './utils/physics/gravity.js';
+import { clearPlayers, drawPlayers, drawProps } from './utils/draw.js';
 import playerMoveEvent from './utils/events.js';
 import displayFPS from './utils/fps.js';
 import Props from './classes/props.js';
+import checkCollisions from './utils/physics/collisions.js';
 
-const /** @type {Player[]} **/ players = [];
-
-const player1 = new Player('John');
-const player2 = new Player('Doe');
-player2.cords.x = 100;
-players.push(player1);
-players.push(player2);
-
-const props = new Props();
-props.addProp({ x: 200, y: 200, width: 50, height: 50 });
-props.addProp({ x: 300, y: 300, width: 50, height: 750 });
-console.log(props.getProps());
+const framerate = 60;
 
 const canvas = document.getElementById('canvas');
 if (!canvas) { throw new Error('Canvas not found!'); }
@@ -24,6 +14,16 @@ const devicePixelRatio = window.devicePixelRatio || 1;
 canvas.width = canvas.clientWidth * devicePixelRatio;
 canvas.height = canvas.clientHeight * devicePixelRatio;
 const /** @type {CanvasRenderingContext2D} **/ ctx = canvas.getContext('2d');
+
+const /** @type {Player[]} **/ players = [];
+const player1 = new Player('John');
+player1.cords.x = 200;
+players.push(player1);
+
+const props = new Props();
+props.addProp({ x: 500, y: 400, width: 50, height: 950 });
+props.addProp({ x: 0, y: 400, width: 50, height: 950 });
+console.log(props.getProps());
 
 playerMoveEvent(player1);
 
@@ -36,16 +36,19 @@ function AnimationLoop() {
     lastFrameTime = currentTime;
     fps = Math.floor(1000 / deltaTime);
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    clearPlayers(players, ctx);
 
-    updatePosition(players, deltaTime);
-    addGravity(players, canvas);
+    checkCollisions(player1, props);
+    updatePosition(players, deltaTime, canvas);
+
     drawPlayers(ctx, players, canvas);
     drawProps(ctx, props);
 
     displayFPS(ctx, fps);
 
-    requestAnimationFrame(AnimationLoop);
+    setTimeout(() => {
+        requestAnimationFrame(AnimationLoop);
+    }, 1000 / framerate);
 }
 
 AnimationLoop();

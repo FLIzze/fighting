@@ -25,4 +25,14 @@ function drawProps(ctx, props) {
     });
 }
 
-export { drawPlayers, drawProps };
+/**
+ * @param {Player[]} players
+ * @param {CanvasRenderingContext2D} ctx
+ **/
+function clearPlayers(players, ctx) {
+    players.forEach(player => {
+        ctx.clearRect(player.cords.x, player.cords.y, player.size.width, player.size.height);
+    });
+}
+
+export { drawPlayers, drawProps, clearPlayers };
