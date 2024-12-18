@@ -1,25 +1,51 @@
 import Player from "../classes/player.js";
 
-/**
- * @param {Player} player
- **/
-function playerMoveEvent(player) {
-    document.addEventListener('keydown', (event) => {
+const keyState = {
+    left: false,
+    right: false
+};
+
+function playerMoveEvent() {
+    function onKeyDown(event) {
         switch (event.key) {
             case 'a':
-                player.moveLeft();
+                keyState.left = true;
                 break;
             case 'd':
-                player.moveRight();
+                keyState.right = true;
                 break;
         }
-    });
+    }
 
-    document.addEventListener('keyup', (event) => {
-        if (event.key === 'a' || event.key === 'd') {
-            player.stop();
+    function onKeyUp(event) {
+        switch (event.key) {
+            case 'a':
+                keyState.left = false;
+                break;
+            case 'd':
+                keyState.right = false;
+                break;
         }
-    });
+    }
+
+    /**
+     * @param {Player} player
+     **/
+    function updatePlayerMovement(player) {
+        if (keyState.left && !keyState.right) {
+            player.moveLeft();  
+        } else if (keyState.right && !keyState.left) {
+            player.moveRight();  
+        } else {
+            player.stop();  
+        }
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('keyup', onKeyUp);
+
+    return updatePlayerMovement;
 }
 
 export default playerMoveEvent;
+

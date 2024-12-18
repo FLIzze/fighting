@@ -1,12 +1,7 @@
 import Player from './classes/player.js'
-import { updatePosition } from './utils/physics/gravity.js';
-import { clearPlayers, drawPlayers, drawProps } from './utils/draw.js';
+import Prop from './classes/prop.js';
 import playerMoveEvent from './utils/events.js';
 import displayFPS from './utils/fps.js';
-import Props from './classes/props.js';
-import checkCollisions from './utils/physics/collisions.js';
-
-const framerate = 60;
 
 const canvas = document.getElementById('canvas');
 if (!canvas) { throw new Error('Canvas not found!'); }
@@ -20,15 +15,14 @@ const player1 = new Player('John');
 player1.cords.x = 200;
 players.push(player1);
 
-const props = new Props();
-props.addProp({ x: 500, y: 400, width: 50, height: 950 });
-props.addProp({ x: 0, y: 400, width: 50, height: 950 });
-console.log(props.getProps());
-
-playerMoveEvent(player1);
+const /** @type {Prop[]} **/ props = [];
+const prop = new Prop({ x: 200, y: 200 }, { width: 200, height: 200 });
+props.push(prop);
 
 let lastFrameTime = performance.now();
 let fps = 0;
+
+const updatePlayerMovement = playerMoveEvent();
 
 function AnimationLoop() {
     const currentTime = performance.now();
@@ -36,19 +30,23 @@ function AnimationLoop() {
     lastFrameTime = currentTime;
     fps = Math.floor(1000 / deltaTime);
 
-    clearPlayers(players, ctx);
+    updatePlayerMovement(player1);
 
-    checkCollisions(player1, props);
-    updatePosition(players, deltaTime, canvas);
+    players.forEach(player => {
+        player.clear(ctx);
+        player.addGravity(deltaTime, canvas);
+        player.updatePosition(deltaTime, canvas);
+        player.draw(ctx);
+    });
 
-    drawPlayers(ctx, players, canvas);
-    drawProps(ctx, props);
+    props.forEach(prop => {
+        prop.draw(ctx);
+    });
 
     displayFPS(ctx, fps);
 
-    setTimeout(() => {
-        requestAnimationFrame(AnimationLoop);
-    }, 1000 / framerate);
+    requestAnimationFrame(AnimationLoop);
 }
 
 AnimationLoop();
+
