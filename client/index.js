@@ -12,12 +12,18 @@ const /** @type {CanvasRenderingContext2D} **/ ctx = canvas.getContext('2d');
 
 const /** @type {Player[]} **/ players = [];
 const player1 = new Player('John');
-player1.cords.x = 200;
+player1.cords.x = 100;
+player1.cords.y = 300;
+player1.velocity.y = player1.fallSpeed;
 players.push(player1);
 
 const /** @type {Prop[]} **/ props = [];
-const prop = new Prop({ x: 200, y: 200 }, { width: 200, height: 200 });
-props.push(prop);
+const floor = new Prop({ x: 0, y: 1000 }, { width: 1400, height: 50 });
+const wall = new Prop({ x: 300, y: 900 }, { width: 50, height: 100 });
+const wall2 = new Prop({ x: 600, y: 800 }, { width: 50, height: 200 });
+const wall3 = new Prop({ x: 900, y: 700 }, { width: 50, height: 300 });
+const wall4 = new Prop({ x: 1200, y: 600 }, { width: 1, height: 400 });
+props.push(floor, wall, wall2, wall3, wall4);
 
 let lastFrameTime = performance.now();
 let fps = 0;
@@ -32,12 +38,17 @@ function AnimationLoop() {
 
     updatePlayerMovement(player1);
 
+    ctx.fillStyle = 'blue';
+
     players.forEach(player => {
         player.clear(ctx);
-        player.addGravity(deltaTime, canvas);
-        player.updatePosition(deltaTime, canvas);
+        player.addGravity(deltaTime);
+        player.handleCollisions(props);
+        player.updatePosition(deltaTime);
         player.draw(ctx);
     });
+
+    ctx.fillStyle = 'green';
 
     props.forEach(prop => {
         prop.draw(ctx);
@@ -49,4 +60,3 @@ function AnimationLoop() {
 }
 
 AnimationLoop();
-

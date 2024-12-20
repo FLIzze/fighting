@@ -11,7 +11,7 @@ function displayFPS(ctx, fps) {
         return;
     }
 
-    ctx.clearRect(0, 0, 200, 100);
+    ctx.clearRect(0, 0, 140, 30);
     ctx.font = '20px Arial';
     ctx.fillStyle = 'black';
     ctx.fillText(`FPS: ${Math.round(fps)}`, 10, 30);

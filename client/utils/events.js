@@ -2,7 +2,8 @@ import Player from "../classes/player.js";
 
 const keyState = {
     left: false,
-    right: false
+    right: false,
+    up: false,
 };
 
 function playerMoveEvent() {
@@ -13,6 +14,9 @@ function playerMoveEvent() {
                 break;
             case 'd':
                 keyState.right = true;
+                break;
+            case 'w':
+                keyState.up = true;
                 break;
         }
     }
@@ -25,6 +29,9 @@ function playerMoveEvent() {
             case 'd':
                 keyState.right = false;
                 break;
+            case 'w':
+                keyState.up = false;
+                break
         }
     }
 
@@ -32,6 +39,10 @@ function playerMoveEvent() {
      * @param {Player} player
      **/
     function updatePlayerMovement(player) {
+        if (keyState.up) {
+            player.jump();
+        }
+
         if (keyState.left && !keyState.right) {
             player.moveLeft();  
         } else if (keyState.right && !keyState.left) {
