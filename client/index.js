@@ -22,7 +22,7 @@ const floor = new Prop({ x: 0, y: 1000 }, { width: 1400, height: 50 });
 const wall = new Prop({ x: 300, y: 900 }, { width: 50, height: 100 });
 const wall2 = new Prop({ x: 600, y: 800 }, { width: 50, height: 200 });
 const wall3 = new Prop({ x: 900, y: 700 }, { width: 50, height: 300 });
-const wall4 = new Prop({ x: 1200, y: 600 }, { width: 1, height: 400 });
+const wall4 = new Prop({ x: 1200, y: 600 }, { width: 50, height: 400 });
 props.push(floor, wall, wall2, wall3, wall4);
 
 let lastFrameTime = performance.now();

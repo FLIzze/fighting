@@ -52,7 +52,7 @@ class Player {
      * @param {CanvasRenderingContext2D} ctx 
      **/
     clear(ctx) {
-        const padding = 10;
+        const padding = 5;
         ctx.clearRect(
             this.cords.x - padding, 
             this.cords.y - padding, 
