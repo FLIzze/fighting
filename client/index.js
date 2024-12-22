@@ -11,18 +11,13 @@ canvas.height = canvas.clientHeight * devicePixelRatio;
 const /** @type {CanvasRenderingContext2D} **/ ctx = canvas.getContext('2d');
 
 const /** @type {Player[]} **/ players = [];
-const player1 = new Player('John');
-player1.cords.x = 100;
-player1.cords.y = 300;
-player1.velocity.y = player1.fallSpeed;
-players.push(player1);
 
 const /** @type {Prop[]} **/ props = [];
-const floor = new Prop({ x: 0, y: 1000 }, { width: 1400, height: 50 });
-const wall = new Prop({ x: 300, y: 900 }, { width: 50, height: 100 });
-const wall2 = new Prop({ x: 600, y: 800 }, { width: 50, height: 200 });
+const floor = new Prop({ x: 0, y: 700 }, { width: 1400, height: 50 });
+const wall = new Prop({ x: 300, y: 400 }, { width: 50, height: 100 });
+const wall2 = new Prop({ x: 600, y: 500 }, { width: 50, height: 200 });
 const wall3 = new Prop({ x: 900, y: 700 }, { width: 50, height: 300 });
-const wall4 = new Prop({ x: 1200, y: 600 }, { width: 50, height: 400 });
+const wall4 = new Prop({ x: 1200, y: 400 }, { width: 50, height: 400 });
 props.push(floor, wall, wall2, wall3, wall4);
 
 let lastFrameTime = performance.now();
@@ -36,7 +31,7 @@ function AnimationLoop() {
     lastFrameTime = currentTime;
     fps = Math.floor(1000 / deltaTime);
 
-    updatePlayerMovement(player1);
+    updatePlayerMovement();
 
     ctx.fillStyle = 'blue';
 

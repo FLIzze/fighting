@@ -1,3 +1,4 @@
+import uuid from "../utils/uuid.js";
 import Prop from "./prop.js";
 
 class Player {
@@ -6,12 +7,16 @@ class Player {
      */
     constructor(name) {
         this.name = name;
+        this.uuid = uuid();
+
         this.cords = { x: 0, y: 0 };
         this.size = { width: 75, height: 150 };
         this.velocity = { x: 0, y: 0 };
+
         this.fallSpeed = 1630;
         this.moveSpeed = 450;
         this.jumpSpeed = 1005;
+
         this.isJumping = true;
     }
 

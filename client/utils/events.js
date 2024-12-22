@@ -59,4 +59,3 @@ function playerMoveEvent() {
 }
 
 export default playerMoveEvent;
-
