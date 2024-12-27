@@ -11,6 +11,8 @@ canvas.height = canvas.clientHeight * devicePixelRatio;
 const /** @type {CanvasRenderingContext2D} **/ ctx = canvas.getContext('2d');
 
 const /** @type {Player[]} **/ players = [];
+// const player = new Player('James');
+// players.push(player);
 
 const /** @type {Prop[]} **/ props = [];
 const floor = new Prop({ x: 0, y: 700 }, { width: 1400, height: 50 });
@@ -31,7 +33,7 @@ function AnimationLoop() {
     lastFrameTime = currentTime;
     fps = Math.floor(1000 / deltaTime);
 
-    updatePlayerMovement();
+    updatePlayerMovement(player);
 
     ctx.fillStyle = 'blue';
 
