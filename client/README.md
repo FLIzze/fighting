@@ -9,25 +9,25 @@ The player has multiple abilities/weapons? to destroy the ground under the other
 ### short term goals
 
 #### Engine
-[ ] Basic gravity
-[ ] Basic movements
-[ ] Basic collisions
-[ ] ground destruction
+- [ ] Basic gravity
+- [ ] Basic movements
+- [ ] Basic collisions
+- [ ] ground destruction
 
 #### Level builder
-[ ] place blocks
-[ ] remove blocks
-[ ] save/load levels
+- [ ] place blocks
+- [ ] remove blocks
+- [ ] save/load levels
 
 #### Multiplayer
-[ ] basic server
-[ ] sync players
-[ ] sync blocks
+- [ ] basic server
+- [ ] sync players
+- [ ] sync blocks
 
 ### long term goals
 
 #### Graphics
-[ ] Sprites
-[ ] Animations
-[ ] Particles
-[ ] Shaders
+- [ ] Sprites
+- [ ] Animations
+- [ ] Particles
+- [ ] Shaders
