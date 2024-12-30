@@ -10,5 +10,6 @@ const (
 )
 
 func main() {
-    s.Start(HOST, PORT)
+    server := s.NewServer()
+    server.Start(HOST, PORT)
 }
