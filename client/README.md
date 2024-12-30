@@ -1,5 +1,7 @@
 # 2D Game from scratch
 
+C++
+
 ## Game idea
 
 2D multiplayer plateformer.
