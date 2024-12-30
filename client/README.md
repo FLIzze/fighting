@@ -1,32 +1,32 @@
-## 2D Game from scratch
+# 2D Game from scratch
 
-### Game idea
+## Game idea
 
 2D multiplayer plateformer.
 The goal would be the same as a spleef game, the last player standing wins.
 The player has multiple abilities/weapons? to destroy the ground under the other players.
 
-### short term goals
+## short term goals
 
-#### Engine
+### Engine
 - [ ] Basic gravity
 - [ ] Basic movements
 - [ ] Basic collisions
 - [ ] ground destruction
 
-#### Level builder
+### Level builder
 - [ ] place blocks
 - [ ] remove blocks
 - [ ] save/load levels
 
-#### Multiplayer
+### Multiplayer
 - [ ] basic server
 - [ ] sync players
 - [ ] sync blocks
 
-### long term goals
+## long term goals
 
-#### Graphics
+### Graphics
 - [ ] Sprites
 - [ ] Animations
 - [ ] Particles
