@@ -11,7 +11,7 @@ The player has multiple abilities/weapons? to destroy the ground under the other
 ## short term goals
 
 ### Engine
-- [ ] Basic gravity
+- [x] Basic gravity
 - [ ] Basic movements
 - [ ] Basic collisions
 - [ ] ground destruction

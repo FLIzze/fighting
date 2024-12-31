@@ -1,0 +1,47 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-I/usr/include/SFML",
+      "-I/home/flizze/Documents/fighting/client/include",
+      "-std=c++17",
+      "-o",
+      "./build/game",
+      "src/main.cpp"
+    ],
+    "directory": "/home/flizze/Documents/fighting/client",
+    "file": "/home/flizze/Documents/fighting/client/src/main.cpp",
+    "output": "/home/flizze/Documents/fighting/client/build/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-I/usr/include/SFML",
+      "-I/home/flizze/Documents/fighting/client/include",
+      "-std=c++17",
+      "-o",
+      "./build/game",
+      "src/player.cpp"
+    ],
+    "directory": "/home/flizze/Documents/fighting/client",
+    "file": "/home/flizze/Documents/fighting/client/src/player.cpp",
+    "output": "/home/flizze/Documents/fighting/client/build/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-I/usr/include/SFML",
+      "-I/home/flizze/Documents/fighting/client/include",
+      "-std=c++17",
+      "-o",
+      "./build/game",
+      "src/prop.cpp"
+    ],
+    "directory": "/home/flizze/Documents/fighting/client",
+    "file": "/home/flizze/Documents/fighting/client/src/prop.cpp",
+    "output": "/home/flizze/Documents/fighting/client/build/game"
+  }
+]
