@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
-#include <string>
 #include "structs.h"
 
 using namespace std;

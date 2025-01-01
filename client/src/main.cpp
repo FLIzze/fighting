@@ -6,11 +6,13 @@ int main() {
     sf::RenderWindow window(sf::VideoMode({800, 600}), "My window");
     sf::Clock clock;
 
-    Player player1("John");
+    Player player1({ 0, 0 }, { 50, 100 });
+    std::vector<Player> players = { player1 };
 
     Prop platform1({0, 500}, {400, 20});
+    Prop wall({200, 200}, {50, 150});
     Prop platform2({400, 400}, {200, 20});
-    std::vector<Prop> props = { platform1, platform2 };
+    std::vector<Prop> props = { platform1, platform2, wall };
 
     while (window.isOpen()) {
         sf::Event event;
@@ -22,16 +24,17 @@ int main() {
 
         window.clear(sf::Color::Black);
 
-        player1.gravity(deltaTime);
-        player1.updatePosition(deltaTime);
-        player1.handleMovements();
-
-        for (int i = 0; i < props.size(); i++) {
-            props[i].draw(window);
-            player1.handleCollisions(props[i]);
+        for (auto& player : players) {
+            player.gravity(deltaTime);
+            player.updatePosition(deltaTime);
+            player.handleMovements();
+            player.draw(window);
+            player.handleCollisions(props);
         }
 
-        player1.draw(window);
+        for (auto& prop : props) {
+            prop.draw(window);
+        }
 
         window.display();
     }

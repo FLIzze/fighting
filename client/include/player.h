@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "structs.h"
 #include "prop.h"
+#include "enums.h"
 
 using namespace std;
 
@@ -21,17 +22,16 @@ class Player {
 
         Player(string playerName, Coords cords = {0, 0}, Size size = {50, 100}, Velocity velocity = {0, 0});
 
-        void display();
-        void draw(sf::RenderWindow& window);
-        void clear(sf::RenderWindow& window);
+        void display() const;
+        void draw(sf::RenderWindow& window) const;
 
-        void move(string direction);
+        void move(Direction direction);
         void handleMovements();
 
         void gravity(sf::Time deltaTime);
         void updatePosition(sf::Time deltaTime);
-        void handleCollisions(Prop prop);
-        bool checkCollisions(Prop prop, string direction);
+        void handleCollisions(std::vector<Prop>& prop);
+        bool checkCollisions(Prop& prop, Direction direction);
 };
 
 #endif
