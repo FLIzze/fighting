@@ -1,4 +1,5 @@
 #include "player.h"
+#include <iostream>
 
 Player::Player(string playerName, Coords cords, Size size, Velocity velocity)
     : name(playerName), cords(cords), size(size), velocity(velocity) {
@@ -31,4 +32,26 @@ void Player::updatePosition(sf::Time deltaTime) {
     }
 
     shape.setPosition(cords.x, cords.y);
+}
+
+void Player::handleCollisions(Prop prop) {
+    if (velocity.y > 0 && checkCollisions(prop, "down")) {
+        velocity.y = 0;
+    }
+}
+
+bool Player::checkCollisions(Prop prop, string direction) {
+    const int padding = 10;
+    if (
+            direction == "down" &&
+            cords.x < prop.cords.x + prop.size.width &&
+            cords.x + size.width > prop.cords.x &&
+            cords.y < prop.cords.y + prop.size.height &&
+            cords.y + size.height + padding > prop.cords.y
+       ) {
+        cords.y = prop.cords.y - size.height;
+        return true;
+    }
+
+    return false;
 }

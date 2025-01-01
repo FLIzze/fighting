@@ -4,8 +4,8 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <string>
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "structs.h"
+#include "prop.h"
 
 using namespace std;
 
@@ -26,6 +26,8 @@ class Player {
 
         void gravity(sf::Time deltaTime);
         void updatePosition(sf::Time deltaTime);
+        void handleCollisions(Prop prop);
+        bool checkCollisions(Prop prop, string direction);
 };
 
 #endif

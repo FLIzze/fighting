@@ -22,6 +22,7 @@ int main() {
         window.clear(sf::Color::Black);
 
         player1.gravity(deltaTime);
+        player1.handleCollisions(platform1);
         player1.updatePosition(deltaTime);
 
         platform1.draw(window);
