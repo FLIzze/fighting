@@ -16,6 +16,7 @@ class Player {
         Coords cords;
         Size size;
         Velocity velocity;
+        bool isJumping;
         sf::RectangleShape shape;
 
         Player(string playerName, Coords cords = {0, 0}, Size size = {50, 100}, Velocity velocity = {0, 0});
@@ -23,6 +24,9 @@ class Player {
         void display();
         void draw(sf::RenderWindow& window);
         void clear(sf::RenderWindow& window);
+
+        void move(string direction);
+        void handleMovements();
 
         void gravity(sf::Time deltaTime);
         void updatePosition(sf::Time deltaTime);

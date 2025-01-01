@@ -12,8 +12,8 @@ The player has multiple abilities/weapons? to destroy the ground under the other
 
 ### Engine
 - [x] Basic gravity
-- [ ] Basic movements
-- [ ] Basic collisions
+- [x] Basic movements
+- [x] Basic collisions
 - [ ] ground destruction
 
 ### Level builder

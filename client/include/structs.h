@@ -12,4 +12,11 @@ struct Velocity {
     float x, y;
 };
 
+struct KeyState {
+    bool left;
+    bool right;
+    bool up;
+    bool down;
+};
+
 #endif

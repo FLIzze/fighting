@@ -10,6 +10,7 @@ int main() {
 
     Prop platform1({0, 500}, {400, 20});
     Prop platform2({400, 400}, {200, 20});
+    std::vector<Prop> props = { platform1, platform2 };
 
     while (window.isOpen()) {
         sf::Event event;
@@ -22,11 +23,13 @@ int main() {
         window.clear(sf::Color::Black);
 
         player1.gravity(deltaTime);
-        player1.handleCollisions(platform1);
         player1.updatePosition(deltaTime);
+        player1.handleMovements();
 
-        platform1.draw(window);
-        platform2.draw(window);
+        for (int i = 0; i < props.size(); i++) {
+            props[i].draw(window);
+            player1.handleCollisions(props[i]);
+        }
 
         player1.draw(window);
 
